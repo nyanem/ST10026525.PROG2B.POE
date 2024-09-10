@@ -4,8 +4,6 @@ Code sourced from W3SCHOOLS & CHATGPT
 @{
     ViewData["Title"] = "Privacy Policy";
 }
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,29 +36,29 @@ Code sourced from W3SCHOOLS & CHATGPT
     <div class="container">
         <div class="dashboard-container">
             <h3>Submit a New Claim</h3>
-            <form>
+            <form method=" post" action="/Lecturer/SubmitClaim" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="month">Month</label>
-                    <input type="text" class="form-control" id="month" placeholder="e.g., August 2024">
+                    <label for="Date">Claim Date</label>
+                    <input type="date" class="form-control" id="Date" name="claimDate" required>
                 </div>
                 <div class="form-group">
                     <label for="hoursWorked">Hours Worked</label>
-                    <input type="number" class="form-control" id="hoursWorked" placeholder="Enter hours worked">
+                    <input type="number" class="form-control" id="hoursWorked" name="hoursWorked" required>
                 </div>
                 <div class="form-group">
                     <label for="hourlyRate">Hourly Rate</label>
-                    <input type="number" class="form-control" id="hourlyRate" placeholder="Enter hourly rate">
+                    <input type="number" class="form-control" id="hourlyRate" name="hourlyRate" required>
                 </div>
                 <div class="form-group">
-                    <label for="supportingDoc">Upload Supporting Document</label>
-                    <input type="file" class="form-control" id="supportingDoc">
+                    <label for="supportingDoc">Upload Time Sheets</label>
+                    <input type="file" class="form-control" id="supportingDoc" name="supportingDoc" accept=".pdf,.docx,.xlsx">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit Claim</button>
             </form>
         </div>
 
         <div class="dashboard-container mt-5">
-            <h3>Your Claims</h3>
+            <h3>Claims History</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -71,25 +69,27 @@ Code sourced from W3SCHOOLS & CHATGPT
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <tr>
-                        <td>August 2024</td>
-                        <td>R 40 000</td>
-                        <td>2024-09-01</td>
-                        <td class="claim-status text-warning">Pending</td>
-                    </tr>
-                    <tr>
-                        <td>July 2024</td>
-                        <td>R 75 000</td>
-                        <td>2024-08-01</td>
-                        <td class="claim-status text-success">Approved</td>
-                    </tr>
-                    <tr>
-                        <td>June 2024</td>
-                        <td>R 7000</td>
-                        <td>2024-07-01</td>
-                        <td class="claim-status text-danger">Denied</td>
-                    </tr>
+                    @foreach (var claim in Model.Claims)
+                    {
+                        <tr>
+                            <td>@claim.Month</td>
+                            <td>@claim.TotalAmount</td>
+                            <td>
+                                @if (claim.Status == "Pending")
+                                {
+                                    <span class="text-warning">Pending</span>
+                                }
+                                else if (claim.Status == "Approved")
+                                {
+                                    <span class="text-success">Approved</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Rejected</span>
+                                }
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

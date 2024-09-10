@@ -44,34 +44,34 @@ Code sourced from W3SCHOOLS & CHATGPT
                 <thead>
                     <tr>
                         <th>Lecturer</th>
-                        <th>Month</th>
+                        <th>Date</th>
                         <th>Total Claim</th>
+                        <th>Hours Worked</th>
                         <th>Supporting Document</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sample rows -->
-                    <tr>
-                        <td>Youn-Soo Kim</td>
-                        <td>August 2024</td>
-                        <td>R 40 000</td>
-                        <td><a href="#" class="doc-link">View Document</a></td>
-                        <td>
-                            <button class="btn btn-approve btn-sm">Approve</button>
-                            <button class="btn btn-deny btn-sm">Deny</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ezekiel Uzono</td>
-                        <td>July 2024</td>
-                        <td>R 60 000</td>
-                        <td><a href="#" class="doc-link">View Document</a></td>
-                        <td>
-                            <button class="btn btn-approve btn-sm">Approve</button>
-                            <button class="btn btn-deny btn-sm">Deny</button>
-                        </td>
-                    </tr>
+                    @foreach (var claim in Model.Claims)
+                    {
+                       <tr>
+                           <td>@claim.LecturerName</td>
+                           <td>@claim.hoursWorked</td>
+                           <td>@claim.totalAmount</td>
+                           <td><a href="/uploads/@claim.DocumentName" target="_blank">View Document</a></td>
+                           <td>@claim.Status</td>
+                           <td>
+                               <form method="post" action="/Admin/ApprovedClaim">
+                                   <input type ="hidden" name="claimId" value="@claim.ClaimId"/>
+                                   <button type = "submit" class=" btn btn-success"> Approve</button>
+                               </form>
+                                <form method="post" action="/Admin/RejectClaim">
+                                    <input type="hidden" name="claimId" value="@claim.ClaimId" />
+                                    <button type="submit" class=" btn btn-danger"> Deny</button>
+                                </form>
+                           </td>
+                       </tr> 
+                    }
                 </tbody>
             </table>
         </div>
