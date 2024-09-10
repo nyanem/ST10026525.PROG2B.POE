@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard - CMCS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .dashboard-container {
+            margin-top: 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-approve {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-deny {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .doc-link {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-container">
+            <h3>Submitted Claims</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Lecturer</th>
+                        <th>Month</th>
+                        <th>Total Claim</th>
+                        <th>Supporting Document</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample rows -->
+                    <tr>
+                        <td>Youn-Soo Kim</td>
+                        <td>August 2024</td>
+                        <td>R 40 000</td>
+                        <td><a href="#" class="doc-link">View Document</a></td>
+                        <td>
+                            <button class="btn btn-approve btn-sm">Approve</button>
+                            <button class="btn btn-deny btn-sm">Deny</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ezekiel Uzono</td>
+                        <td>July 2024</td>
+                        <td>R 60 000</td>
+                        <td><a href="#" class="doc-link">View Document</a></td>
+                        <td>
+                            <button class="btn btn-approve btn-sm">Approve</button>
+                            <button class="btn btn-deny btn-sm">Deny</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

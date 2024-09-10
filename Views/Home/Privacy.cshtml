@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard - CMCS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .dashboard-container {
+            margin-top: 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .claim-status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-container">
+            <h3>Submit a New Claim</h3>
+            <form>
+                <div class="form-group">
+                    <label for="month">Month</label>
+                    <input type="text" class="form-control" id="month" placeholder="e.g., August 2024">
+                </div>
+                <div class="form-group">
+                    <label for="hoursWorked">Hours Worked</label>
+                    <input type="number" class="form-control" id="hoursWorked" placeholder="Enter hours worked">
+                </div>
+                <div class="form-group">
+                    <label for="hourlyRate">Hourly Rate</label>
+                    <input type="number" class="form-control" id="hourlyRate" placeholder="Enter hourly rate">
+                </div>
+                <div class="form-group">
+                    <label for="supportingDoc">Upload Supporting Document</label>
+                    <input type="file" class="form-control" id="supportingDoc">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit Claim</button>
+            </form>
+        </div>
+
+        <div class="dashboard-container mt-5">
+            <h3>Your Claims</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Total Claim</th>
+                        <th>Submission Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>August 2024</td>
+                        <td>R 40 000</td>
+                        <td>2024-09-01</td>
+                        <td class="claim-status text-warning">Pending</td>
+                    </tr>
+                    <tr>
+                        <td>July 2024</td>
+                        <td>R 75 000</td>
+                        <td>2024-08-01</td>
+                        <td class="claim-status text-success">Approved</td>
+                    </tr>
+                    <tr>
+                        <td>June 2024</td>
+                        <td>R 7000</td>
+                        <td>2024-07-01</td>
+                        <td class="claim-status text-danger">Denied</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
