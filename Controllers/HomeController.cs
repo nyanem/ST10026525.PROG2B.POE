@@ -23,6 +23,7 @@ namespace ST10026525.PROG62112.POE.part1.Controllers
             return View();
         }
 
+        // Inserting admin dashboard to home controller
         public IActionResult AdminDashboard()
         {
             return View();
