@@ -7,7 +7,7 @@ namespace ST10026525.PROG62112.POE.part1.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        DbSet <Claims> claims { get; set; }
+       public DbSet <Claims> claims { get; set; }
         DbSet<Lecturer> Lecturers { get; set; }
         DbSet<Manager> Managers { get; set; }
     }

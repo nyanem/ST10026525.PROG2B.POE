@@ -1,6 +1,9 @@
 ﻿<!---References: 
 Code sourced from W3SCHOOLS & CHATGPT
 --------------------------------------------------------------------->
+@model List<ST10026525.PROG62112.POE.part1.Models.Claims>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@ Code sourced from W3SCHOOLS & CHATGPT
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator Dashboard - CMCS</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+   <!-- <style>
         body {
             background-color: #f0f0f0;
         }
@@ -34,12 +37,14 @@ Code sourced from W3SCHOOLS & CHATGPT
         .doc-link {
             color: #007bff;
         }
-    </style>
+        </style> -->
 </head>
 <body>
     <div class="container">
         <div class="dashboard-container">
             <h3>Submitted Claims</h3>
+         
+                    {
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -48,25 +53,27 @@ Code sourced from W3SCHOOLS & CHATGPT
                         <th>Total Claim</th>
                         <th>Hours Worked</th>
                         <th>Supporting Document</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var claim in Model.Claims)
+                   
+                    @foreach (var claims in Model)
                     {
                        <tr>
-                           <td>@claim.LecturerName</td>
-                           <td>@claim.hoursWorked</td>
-                           <td>@claim.totalAmount</td>
-                           <td><a href="/uploads/@claim.DocumentName" target="_blank">View Document</a></td>
-                           <td>@claim.Status</td>
+                           <td>@claims.ClaimsId</td>
+                           <td>@claims.hoursWorked</td>
+                           <td>@claims.TotalAmount</td>
+                                <td><a href="/uploads/@claims.supportingDocument "target="_blank">View Document</a></td>
+                           <td>@claims.Status</td>
                            <td>
                                <form method="post" action="/Admin/ApprovedClaim">
-                                   <input type ="hidden" name="claimId" value="@claim.ClaimId"/>
+                                   <input type ="hidden" name="claimId" value="@claims.ClaimsId"/>
                                    <button type = "submit" class=" btn btn-success"> Approve</button>
                                </form>
                                 <form method="post" action="/Admin/RejectClaim">
-                                    <input type="hidden" name="claimId" value="@claim.ClaimId" />
+                                    <input type="hidden" name="claimId" value="@claims.ClaimsId" />
                                     <button type="submit" class=" btn btn-danger"> Deny</button>
                                 </form>
                            </td>
@@ -74,6 +81,7 @@ Code sourced from W3SCHOOLS & CHATGPT
                     }
                 </tbody>
             </table>
+                    
         </div>
     </div>
 </body>

@@ -1,9 +1,8 @@
 ﻿<!---References:
 Code sourced from W3SCHOOLS & CHATGPT
 --------------------------------------------------------------------->
-@{
-    ViewData["Title"] = "Privacy Policy";
-}
+@model List<ST10026525.PROG62112.POE.part1.Models.Claims>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,24 +68,14 @@ Code sourced from W3SCHOOLS & CHATGPT
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var claim in Model.Claims)
+                    @foreach (var claims in Model)
                     {
                         <tr>
-                            <td>@claim.Month</td>
-                            <td>@claim.TotalAmount</td>
+                           <td>@claims.hoursWorked</td>
+                           <td>@claims.TotalAmount</td>
+                           <td>@claims.Status</td>
                             <td>
-                                @if (claim.Status == "Pending")
-                                {
-                                    <span class="text-warning">Pending</span>
-                                }
-                                else if (claim.Status == "Approved")
-                                {
-                                    <span class="text-success">Approved</span>
-                                }
-                                else
-                                {
-                                    <span class="text-danger">Rejected</span>
-                                }
+                                <a href="/uploads/@claims.supportingDocument" target="_blank">@claims.supportingDocument</a>
                             </td>
                         </tr>
                     }
